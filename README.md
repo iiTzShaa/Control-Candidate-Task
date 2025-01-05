@@ -15,18 +15,38 @@ A Docker tool that combines Gitleaks secret detection with Python output process
   - `zricethezav/gitleaks:latest`
   - `python:3.10-alpine3.16`
 
-## Usage
+## Quick Start
 
-1. Build the image:
+1. Clone the repository:
 ```bash
-docker build -t gitleaks-python .
+git clone https://github.com/iiTzShaa/Control-Candidate-Task.git
+cd Control-Candidate-Task
 ```
 
-2. Run a scan:
+2. Build the Docker image:
 ```bash
-docker run -v $(pwd):/code gitleaks-python gitleaks detect --no-git --report-path /code/output.json /code/
+docker build -t gitleaks-integration .
 ```
 
+3. Set up test environment (optional):
+```bash
+# Create test directory
+mkdir tests
+cd tests
+
+# Clone test repository
+git clone https://github.com/atrull/fake-public-secrets.git
+cd ..
+```
+
+4. Run a scan:
+```bash
+# Scan current directory
+docker run -v $(pwd):/code gitleaks-integration gitleaks detect --no-git --report-path /code/output.json /code/
+
+# Or scan test repository (if you set it up)
+docker run -v $(pwd)/tests/fake-public-secrets:/code gitleaks-integration gitleaks detect --no-git --report-path /code/output.json /code/
+```
 ## Output Format
 
 Success:
@@ -49,6 +69,8 @@ Error:
     "error_message": "Gitleaks execution failed"
 }
 ```
+
+
 
 ## Requirements
 - Docker
