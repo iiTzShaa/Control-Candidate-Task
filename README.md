@@ -24,7 +24,7 @@ docker build -t gitleaks-python .
 
 2. Run a scan:
 ```bash
-docker run -v $(pwd):/code gitleaks-python detect --no-git --report-path /code/output.json /code/
+docker run -v $(pwd):/code gitleaks-python gitleaks detect --no-git --report-path /code/output.json /code/
 ```
 
 ## Output Format
