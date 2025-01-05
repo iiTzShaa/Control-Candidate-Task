@@ -4,7 +4,7 @@ A Docker tool that combines Gitleaks secret detection with Python output process
 
 ## Components
 
-### 1. Python Script (`script.py`)
+### 1. Python Script (`transform_gitleaks.py`)
 - Runs Gitleaks with provided arguments
 - Transforms output to specified JSON format
 - Uses Pydantic for data modeling
